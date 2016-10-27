@@ -1,22 +1,23 @@
+Warning
+-------
+This is a test given to a person seeking the role of backend engineer. I have virtually no prior experience with Python and I have never used Flask. 
+The code in this project does not up to even minimal standard one would expect. 
+For me it was still interesting as it gave me a chance to try out Python but I am still feeling uneasy releasing this to foreign eyes. 
+My hope is that the project could still serve as a talking point where I can try and discuss how I would have wanted a proper solution to look.
+
 Storing spatial data
 --------------------
-In a real world application we would most likley use a database which is prebuild to handel 
-spatial queries such as Geospatial indexes in MongoDB och PostGIS but since the purpose of this
-project is to demonstrate that I did not waste my time going to engineering school I will 
-refrain from using them and instead use SQLLite.
+In a real world application we would most likley use a database which is prebuild to handle 
+spatial queries such as Geospatial indexes in MongoDB and PostGIS.
 
-If the dataset is relativly small then we could start by filtering on cheap operations such as the 
-tags, abs(ourLng - shopLng) > dist, abs(ourLat-shotLat) > dist. The resulting dataset could then be 
-chosen by checking the distance with pythagoran and sort by review and then return with a 
-'top x'. 
+If the dataset is fairly small we and the distance is small then we can project the (lng,lat) in to
+a different space and use (x,y,z) which allows for the calculation of the distance by taking the
+euclidean norm sqrt(x^2 + y^2 + z^2) where x,y,z are the distance between us and the shop in each direction.
 
 This aproch is simple to implement and understand and is as such a nice starting point. If you
 on the other hand have a large dataset or you're simple trying to impress your future empoler with
-you can instread use a R-tree. 
-
-R-trees
--------
-
+you can instread use a R-tree. In this project I have not implemented a R-tree or R*-tree but I can give the
+algorithm for one if it is of interest.
 
 Note on Quality Assurance 
 -------------------------
@@ -26,33 +27,13 @@ of testing to recieve a ER mark i.e. approved as medical device I am all for wri
 Not only can unit testing make sure our program functions the way we want it can also help new
 developers understand the expected functionality and as such serve as a form of documentation. Further
 employing patterns such as inversion of control will lead to more modulare code and ties in well
-in a event-driven infrastructure. This being said the code in this project could use a refactoring of 
-before it could live up to and sort of QA standard that I would feel proud about. 
+in a event-driven infrastructure. None of this is reflected in the code. In fact, you will find that the database query is open for sql-injection to name just one of many gaping wholes in quality.
 
 Final thoughts
 --------------
-This is the first time I've written and Python code in a long while and it has been fun discovering
+This is the first time I've written any Python code in a long, long while and it has been fun discovering
 the language again. It has also been fun trying out Flask which I have never before used. Since I havnt
 had the chance to do any coding myself lately in my current position outside of testing out new SaaS 
-and FaaS features on my spare time this exercise has been rewarding. Feel free to skip the next
-section if you wish to end on a happy note.
+and FaaS features on my spare time this exercise has been rewarding. That being said it is somewhat painful having to submit something of this quality to the outside world. 
 
-The new "Extreme programming"
-----------------------------
-Short story. I recieved this assignment sometime in the middle of last week, read the instructions
-and figured, no problem, I'll to it this Saturday. Well, Saturday comes and I sit down and get going. Since I
-had never used flask before I started by quickly reading up on how to get going. Now straight away
-I get a small set back as I try to set everythin up, when my pip installer for some reason will not work. 
-Okey, I think to myself,
-not a big deal, we can fix this. But it was a big deal, because I had 6 days earlier decided I would
-quit snus (tobacco product). But I manage to pull through when I find that my PATH variable
-was all messed up. Ok, breath. Then when I try to get flask my internet goes down. You see, 
-I live in probably the only appartment in Stockholm where there is no land line and 
-my 4G modem only allows 200 GB of data per month, which I had used for MIT open courses. Fine, it was mostly Netflix.
-Anyhow, my baby is now screaming as try to get the mobile hot spot on my phone up. 
-As the web page I use for instructions slowly, slowly, loads I 
-realize as I am hammering away on the refresh button that I am in the middle of a snus related breakdown.
-So I simply close the computer and walk away, trying not give reviel to my wife the emotional trauma I
-had just been through. Luckily, the next day I went and bought some snus and here we are. 
-All well in the end.
 

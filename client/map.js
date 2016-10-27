@@ -162,10 +162,18 @@
 	  $.ajax({
         url: "http://localhost:5000/search",
         type: 'GET',
+		data:{
+		  count:this.prefs.count,
+		  radius:this.prefs.radius,
+		  lat:this.prefs.position.lat,
+		  lng:this.prefs.position.lng,
+		  tags:this.prefs.tags
+		},
+		traditional: true,
         dataType: 'json', // added data type
         success: function(res) {
             console.log(res);
-            alert(res);
+            cb(false,res);
         }
     });
 
